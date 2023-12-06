@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css" />
-</head>
 
-<body>
-    <div class="wrapper" id="wrapper">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Recursive:wght@400;500;600&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title-container">
+        <h1 class="title"></h1>
+      </div>
+      <div class="wrapper" id="wrapper">
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
@@ -19,15 +28,14 @@
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
+      </div>
     </div>
-
     <dialog class="modal" id="modal">
-        <img src="./img/win.gif" alt="winner gif" />
-        <h3 class="winning-msg-text"></h3>
-        <button class="restart-btn">Restart</button>
+      <img src="./img/win.gif" alt="winner gif" />
+      <h3 class="winning-msg-text"></h3>
+      <button class="restart-btn">Start Again</button>
     </dialog>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

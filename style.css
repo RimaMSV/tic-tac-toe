@@ -1,90 +1,111 @@
 *,
 *::before,
 *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: 'Courier New', Courier, monospace;
+  font-size: 62.5%;
+  font-family: 'Finger Paint', 'Recursive', sans-serif;
 }
 
 :root {
-    --cell-dimention: 10rem;
-    --mark-size: calc(var(--cell-dimention) * 0.9)
+  --cell-dimention: 10rem;
+  --mark-size: calc(var(--cell-dimention) * 0.9);
+}
+
+body {
+  background-color: #666a86;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 9rem;
 }
 
 .wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
-    grid-row-gap: 0.5rem;
-    grid-column-gap: 0.5rem;
-    background-color: rgb(97, 215, 215);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+}
+
+.title-container {
+  background-color: #e8ddb5;
+  color: #222;
+  padding: 1.8rem 2rem;
+  border-radius: 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.title {
+  font-size: 4rem;
 }
 
 .cell {
-    width: var(--cell-dimention);
-    height: var(--cell-dimention);
-    border-radius: 0.9rem;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
-    background-color: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: var(--cell-dimention);
+  height: var(--cell-dimention);
+  border-radius: 0.9rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: rgb(187, 203, 183, 0.45);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .cell.x,
 .cell.circle {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 /*  X Design */
 .cell.x::before,
 .cell.x::after,
 .cell.circle::before {
-    background-color: black;
+  background-color: #444;
 }
 
 .wrapper.x .cell:not(.x):not(.circle):hover::before,
 .wrapper.x .cell:not(.x):not(.circle):hover::after,
 .wrapper.circle .cell:not(.x):not(.circle):hover::before {
-    background-color: #bbb;
+  background-color: rgb(187, 203, 183, 0.45);
 }
-
 
 .cell.x::before,
 .cell.x::after,
 .wrapper.x .cell:not(.x):not(.circle):hover::before,
 .wrapper.x .cell:not(.x):not(.circle):hover::after {
-    content: '';
-    width: calc(var(--mark-size) * 0.13);
-    height: var(--mark-size);
+  content: '';
+  width: calc(var(--mark-size) * 0.13);
+  height: var(--mark-size);
 
-    position: absolute;
-    border-radius: 5px;
-
+  position: absolute;
+  border-radius: 5px;
 }
 
 .cell.cell.x::before,
 .wrapper.x .cell:not(.x):not(.circle):hover::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .cell.cell.x::after,
 .wrapper.x .cell:not(.x):not(.circle):hover::after {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /* O Design */
@@ -92,76 +113,99 @@ html {
 .cell.circle::after,
 .wrapper.circle .cell:not(.x):not(.circle):hover::before,
 .wrapper.circle .cell:not(.x):not(.circle):hover::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
+  content: '';
+  position: absolute;
+  border-radius: 50%;
 }
 
 .cell.circle::before,
 .wrapper.circle .cell:not(.x):not(.circle):hover::before {
-    width: var(--mark-size);
-    height: var(--mark-size);
-
+  width: var(--mark-size);
+  height: var(--mark-size);
 }
 
 .cell.circle::after,
 .wrapper.circle .cell:not(.x):not(.circle):hover::after {
-    width: calc(var(--mark-size) * 0.75);
-    height: calc(var(--mark-size) * 0.75);
-    background-color: rgba(97, 215, 215, 0.929);
-    backdrop-filter: blur(1rem);
+  width: calc(var(--mark-size) * 0.75);
+  height: calc(var(--mark-size) * 0.75);
+  background-color: rgba(187, 203, 183, 0.8);
+  backdrop-filter: blur(1rem);
 }
 
 /* Modal */
 
 .modal {
-    background-color: #cdcae4;
-    max-width: 45rem;
-    width: 100%;
-    text-align: center;
-    padding: 4rem;
-    border-radius: 1rem;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 5px solid #6e8ddb;
-
+  background-color: #cdcae486;
+  max-width: 45rem;
+  width: 100%;
+  text-align: center;
+  padding: 4rem;
+  border-radius: 1rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #6e8ddb;
 }
 
-#modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal>img {
-    max-width: 18rem;
-    /* margin-bottom: 1rem; */
+.modal > img {
+  max-width: 18rem;
+  /* margin-bottom: 1rem; */
 }
 
-.modal>h3 {
+.modal > h3 {
+  font-size: 3.2rem;
+  margin-bottom: 2.4rem;
+  color: #111;
+}
+
+.modal > button {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1.2rem 1.8rem;
+  border: 3px solid #f2efea;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #6e8ddb;
+  color: #f2efea;
+  letter-spacing: 0.6px;
+  outline: none;
+
+  transition: all 0.3s;
+}
+
+.modal > button:hover {
+  background-color: #c5d6c0ec;
+  color: #403d58;
+  transform: translateY(3px);
+  border: 3px solid #f2efea;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/* HELPER CLASS */
+
+.active {
+  visibility: visible;
+}
+
+/* Media Query */
+
+@media (max-width: 48em) {
+  .container {
+    gap: 7rem;
+  }
+  .title {
     font-size: 3.2rem;
-    margin-bottom: 2.4rem;
+  }
 }
-
-.modal>button {
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding: 1.2rem 1.8rem;
-    border: 3px solid #f2efea;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    background-color: #66d7d1;
-    color: #403d58;
-
-    transition: all 0.3s;
-}
-
-.modal>button:hover {
-    background-color: #66d7d1;
-    color: #403d58;
-    transform: translateY(3px);
-    border: 3px solid #f2efea;
-
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+@media (max-width: 32em) {
+  .title {
+    font-size: 2rem;
+  }
 }
